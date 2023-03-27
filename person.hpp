@@ -31,6 +31,8 @@ class Person {
     virtual size_t getSalary() const = 0;
     virtual size_t getIndexNumber() const = 0;
     virtual void setSalary(const size_t& newSalary) = 0;
+    
+    const Address& getAddress();
 
 public: 
     PersonType type_;
