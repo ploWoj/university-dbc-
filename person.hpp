@@ -1,16 +1,23 @@
-#pragma once 
+#pragma once
 #include <string>
 
 #include "address.hpp"
 
-enum class Sex {
-    Femel, Male, Other
+enum class Sex
+{
+    Femel,
+    Male,
+    Other
 };
 
-class Person {
-    enum class PersonType {
-        Student, Employee
-    };
+enum class PersonType
+{
+    Student,
+    Employee
+};
+
+class Person
+{
 
     Person(PersonType type, std::string firstName, std::string secondName, std::string pesel, Address address, Sex sex);
 
@@ -30,15 +37,15 @@ class Person {
     Sex getSex() const;
     virtual size_t getSalary() const = 0;
     virtual size_t getIndexNumber() const = 0;
-    virtual void setSalary(const size_t& newSalary) = 0;
-    
-    const Address& getAddress();
+    virtual void setSalary(const size_t &newSalary) = 0;
 
-public: 
+    const Address &getAddress();
+
+public:
     PersonType type_;
     std::string firstName_;
     std::string secondName_;
     std::string pesel_;
     Address address_;
-    Sex sex_;   
+    Sex sex_;
 };
