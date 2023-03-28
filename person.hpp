@@ -31,8 +31,6 @@ public:
     void setAddress(const std::string&);
     void setPesel(const std::string&);
     void setSex(const Sex&);
-    virtual double getSalary() const = 0;
-    virtual void display() = 0;
 private:    
     std::string name_;
     std::string surname_;
