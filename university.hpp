@@ -29,8 +29,11 @@ public:
     Person* findByPesel(const std::string& pesel);
     // std::optional<std::unique_ptr<Student>> findByPesel(const std::string& pesel);
     // Wyszukiwanie po numerze PESEL
+
     // Sortowanie po numerze PESEL
+    void sortByPesel();
     // Sortowanie po nazwisku
+    void sortBySurname();
     // Usuwanie po numerze indeksu
 
 private:

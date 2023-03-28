@@ -83,4 +83,11 @@ Person* University::findBySurname(const std::string& surname) {
     return person_pr;
 }
 
+void University::sortByPesel() {
+    std::sort(university_.cbegin(), university_.cend(), [](const std::unique_ptr<Person>& lhs, const std::unique_ptr<Person>& rhs) { return rhs->getPesel() < lhs->getPesel(); });
+}
+
+void University::sortBySurname() {
+    std::sort(university_.cbegin(), university_.cend(), [](const std::unique_ptr<Person>& lhs, const std::unique_ptr<Person>& rhs) { return rhs->getSurname() < lhs->getSurname(); });
+}
 
