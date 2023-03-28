@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-#include "address.hpp"
-
 enum class Sex
 {
     Femel,
@@ -10,42 +8,33 @@ enum class Sex
     Other
 };
 
-enum class PersonType
-{
-    Student,
-    Employee
-};
-
 class Person
 {
-
-    Person(PersonType type, std::string firstName, std::string secondName, std::string pesel, Address address, Sex sex);
-
-    virtual ~Person();
+    Person() = default;
+    Person(std::string firstName, std::string secondName, std::string pesel, Address address, Sex sex);
+    virtual ~Person() = default;
 
     // getters
-
-    PersonType getPersonType() const;
     std::string getFirstName() const;
     std::string getSecondName() const;
     std::string getPesel() const;
     std::string getAddress() const;
-    std::string getPostalCode() const;
-    std::string getCity() const;
-    std::string getStreetAndNumber() const;
+    std::string getSex() const;
+    virtual double getSalary() const = 0;
+    virtual void display() = 0;    
 
-    Sex getSex() const;
-    virtual size_t getSalary() const = 0;
-    virtual size_t getIndexNumber() const = 0;
-    virtual void setSalary(const size_t &newSalary) = 0;
-
-    const Address &getAddress();
-
-public:
-    PersonType type_;
+    // setters
+    void setName(const std::string&);
+    void setSurname(const std::string&);
+    void setAddress(const std::string&);
+    void setPesel(const std::string&);
+    void setGender(const std::string&);
+    virtual double setSalary() const = 0;
+    virtual void display() = 0;
+private:    
     std::string firstName_;
     std::string secondName_;
     std::string pesel_;
-    Address address_;
+    std::string address_;
     Sex sex_;
 };

@@ -19,4 +19,4 @@ public:
 
 private:
     size_t indexNumber_;
-}
+};
