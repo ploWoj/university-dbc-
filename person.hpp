@@ -11,12 +11,12 @@ enum class Sex
 class Person
 {
     Person() = default;
-    Person(std::string firstName, std::string secondName, std::string pesel, Address address, Sex sex);
+    Person(std::string name, std::string surname, std::string pesel, std::string address, Sex sex);
     virtual ~Person() = default;
 
     // getters
-    std::string getFirstName() const;
-    std::string getSecondName() const;
+    std::string getName() const;
+    std::string getSurname() const;
     std::string getPesel() const;
     std::string getAddress() const;
     std::string getSex() const;
@@ -28,12 +28,12 @@ class Person
     void setSurname(const std::string&);
     void setAddress(const std::string&);
     void setPesel(const std::string&);
-    void setGender(const std::string&);
+    void setSex(const Sex&);
     virtual double setSalary() const = 0;
     virtual void display() = 0;
 private:    
-    std::string firstName_;
-    std::string secondName_;
+    std::string name_;
+    std::string surname_;
     std::string pesel_;
     std::string address_;
     Sex sex_;

@@ -1,37 +1,72 @@
 #include "person.hpp"
 
-Person::Person(PersonType type, std::string firstName, std::string secondName, std::string pesel, Address address, Sex sex)
-    : type_(type), firstName_(firstName), secondName_(secondName), pesel_(pesel), address_(address), sex_(sex){};
+#include <iostream>
 
-PersonType Person::getPersonType() const
+Person::Person(std::string name, std::string surname, std::string pesel, std::string address, Sex sex) 
+    : name_(name)
+    , surname_(name)
+    , pesel_(pesel)
+    , address_(address)
+    , sex_(sex)
+    {};
+
+void Person::setName(const std::string& name)
 {
-    return type_;
+    name_ = name;
 }
-std::string Person::getFirstName() const
+
+void Person::setSurname(const std::string& surname)
 {
-    return firstName_;
+    surname_ = surname;
 }
-std::string Person::getSecondName() const
+
+void Person::setAddress(const std::string& address)
 {
-    return secondName_;
+    address_ = address;
 }
+
+void Person::setPesel(const std::string& pesel)
+{
+    pesel_ = pesel;
+}
+
+void Person::setSex(const Sex& sex)
+{
+    sex_ = sex;
+}
+
+std::string Person::getName() const
+{
+    return name_;
+}
+
+std::string Person::getSurname() const
+{
+    return surname_;;
+}
+
+std::string Person::getAddress() const
+{
+    return address_;
+}
+
 std::string Person::getPesel() const
 {
     return pesel_;
 }
-std::string Person::getAddress() const {
-    return address_.getAddress();
-}
-std::string Person::getPostalCode() const {
-    return address_.getPostalCode();
-}
-std::string Person::getCity() const {
-    return address_.getCity();
-}
-std::string Person::getStreetAndNumber() const {
-    return address_.getStreetAndNumber();
+
+std::string Person::getSex() const
+{
+    if (sex_ == Sex::Femel) {
+        return "Femel";
+    } if (sex_ == Sex::Male) {
+        return "Male";
+    }
+    return "Other";
 }
 
-const Address& Person::getAddress() {
-    return address_;
-} 
+void Person::display()
+{
+    std::cout << name_ << ", " << surname_ << ", " << address_ << ", " << pesel_
+              << ", " << getSex() << '\n';
+}
