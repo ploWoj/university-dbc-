@@ -134,3 +134,16 @@ void University::addEmployee(const std::string &name, const std::string &surname
     }
 }
 
+void University::modifySalary(double salary, std::string& pesel) {
+    auto person = findByPesel(pesel);
+    if (!person) {
+        std::cout << "Person with that person does not exists!\n";
+        return;
+    }
+    if (Employee* e = dynamic_cast<Employee*>(person)) {
+        e->setSalary(salary);
+    } else {
+        std::cout << "ERROR! Student do not have salary!\n";
+    }
+}
+
