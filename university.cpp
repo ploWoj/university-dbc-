@@ -106,3 +106,17 @@ void University::ereaseByIndex(const size_t indexNumber, std::string message) {
     message = "No student with that index number in database!";
 }
 
+void University::addStudent() {
+    university_.emplace_back(std::make_unique<Student>());
+}
+
+void University::addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, Sex &sex, size_t indexNumber) {
+    if (peselValidation(pesel)) {
+        if (!findByPesel(pesel)) {
+            university_.emplace_back(std::make_unique<Student>(name, surname, address, pesel, sex, indexNumber));
+        }
+    } else {
+        std::cout << "Wrong pesel number!\n";
+    }
+}
+

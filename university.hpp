@@ -21,14 +21,15 @@ public:
     const DB getDB() const;
     void displayDB();
     void addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, Sex &sex, size_t indexNumber);
-    //     Przechowywanie rekordów tów o strukturze: Imię, nazwisko, adres, nr indeksu, PESEL, płeć
-    // Dodawanie nowych studentów
-    // Wyświetlanie całej bazy danych - zrobione
+    void addStudent();
+
+    void addEmployee(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, Sex &sex, size_t salary);
+    void addEmployee();
+    
     Person* findBySurname(const std::string& surname);
-    // Wyszukiwanie po nazwisku
+    
     Person* findByPesel(const std::string& pesel);
-    // std::optional<std::unique_ptr<Student>> findByPesel(const std::string& pesel);
-    // Wyszukiwanie po numerze PESEL
+    
 
     // Sortowanie po numerze PESEL
     void sortByPesel();
