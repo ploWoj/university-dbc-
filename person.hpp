@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 
 enum class Sex
@@ -10,6 +11,7 @@ enum class Sex
 
 class Person
 {
+public:
     Person() = default;
     Person(std::string name, std::string surname, std::string pesel, std::string address, Sex sex);
     virtual ~Person() = default;

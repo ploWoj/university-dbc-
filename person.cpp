@@ -1,6 +1,5 @@
 #include "person.hpp"
 
-#include <iostream>
 
 Person::Person(std::string name, std::string surname, std::string pesel, std::string address, Sex sex) 
     : name_(name)
