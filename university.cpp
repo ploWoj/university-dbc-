@@ -120,3 +120,17 @@ void University::addStudent(const std::string &name, const std::string &surname,
     }
 }
 
+void University::addEmployee() {
+    university_.emplace_back(std::make_unique<Employee>());
+}
+
+void University::addEmployee(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, Sex &sex, size_t salary) {
+    if (peselValidation(pesel)) {
+        if (!findByPesel(pesel)) {
+            university_.emplace_back(std::make_unique<Employee>(name, surname, address, pesel, sex, salary));
+        }
+    } else {
+        std::cout << "Wrong pesel number";
+    }
+}
+
