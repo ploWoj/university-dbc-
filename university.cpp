@@ -91,3 +91,18 @@ void University::sortBySurname() {
     std::sort(university_.cbegin(), university_.cend(), [](const std::unique_ptr<Person>& lhs, const std::unique_ptr<Person>& rhs) { return rhs->getSurname() < lhs->getSurname(); });
 }
 
+void University::ereaseByIndex(const size_t indexNumber, std::string message) {
+    size_t i{0};
+    for (const auto& el : university_) {
+        if (auto s = dynamic_cast<Student*>(el.get())) {
+            if (s->getIndexNumber() == indexNumber) {
+                university_.erase(university_.begin() + i);
+                message = "Remove succesfully";
+                return;
+            }
+        }
+        i++;
+    }
+    message = "No student with that index number in database!";
+}
+

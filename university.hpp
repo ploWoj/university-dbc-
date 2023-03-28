@@ -35,7 +35,7 @@ public:
     // Sortowanie po nazwisku
     void sortBySurname();
     // Usuwanie po numerze indeksu
-
+    void ereaseByIndex(const size_t indexNumber, std::string message);
 private:
     bool peselValidation(const std::string &pesel);
     DB university_;
