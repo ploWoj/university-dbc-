@@ -61,23 +61,26 @@ void University::addStudent(const std::string &name, const std::string &surname,
     }
 }
 
-// std::unique_ptr<Student> University::findByPesel(const std::string& pesel) {
-//     auto find = std::find_if(university_.cbegin(), university_.cend(), [pesel](const std::unique_ptr<Student>& student) { return student->getPesel() == pesel; });
+Person* University::findByPesel(const std::string& pesel) {
+    auto it = std::find_if(university_.cbegin(), university_.cend(), [&pesel](const std::unique_ptr<Person>& person) { return person->getPesel() == pesel; });
 
-//     if (find == university_.cbegin()) {
-//         return nullptr;
-//     }
-
-//     return std::move(find);
-// }
-
-std::optional<std::unique_ptr<Student>> findByPesel(const std::string& pesel) {
-    std::optional<std::unique_ptr<Student>> ptr_out{};
-    for (const auto& person : university) {
-        if (person->getPesel() == pesel) {
-            ptr_out = std::move(person);
-            return ptr_out;
-        } 
+    if (it == university_.cbegin()) {
+        return nullptr;
     }
-    return ptr_out;
+
+    Person* person_ptr = it->get();
+    
+    return person_ptr;
 }
+
+Person* University::findBySurname(const std::string& surname) {
+    auto it = std::find_if(university_.cbegin(), university_.cend(), [&surname](const std::unique_ptr<Person>& person) { return person->getSurname() == surname; });
+    if (it == university_.cbegin()) {
+        return nullptr;
+    }
+    Person* person_pr = it->get();
+
+    return person_pr;
+}
+
+

@@ -24,10 +24,10 @@ public:
     //     Przechowywanie rekordów tów o strukturze: Imię, nazwisko, adres, nr indeksu, PESEL, płeć
     // Dodawanie nowych studentów
     // Wyświetlanie całej bazy danych - zrobione
-    std::unique_ptr<Student> findBySurname(const std::string& surname);
+    Person* findBySurname(const std::string& surname);
     // Wyszukiwanie po nazwisku
-    std::unique_ptr<Student> findByPesel(const std::string& pesel);
-    std::optional<std::unique_ptr<Student>> findByPesel(const std::string& pesel);
+    Person* findByPesel(const std::string& pesel);
+    // std::optional<std::unique_ptr<Student>> findByPesel(const std::string& pesel);
     // Wyszukiwanie po numerze PESEL
     // Sortowanie po numerze PESEL
     // Sortowanie po nazwisku
