@@ -1,3 +1,5 @@
+#include <fstream>
+
 #include "university.hpp"
 
 #include <algorithm>
@@ -53,7 +55,7 @@ void University::displayDB()
     }
 }
 
-void University::addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string& pesel, Sex &sex, size_t indexNumber) {
+void University::addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string& pesel, std::string &sex, size_t indexNumber) {
     if (peselValidation(pesel)) {
         university_.emplace_back(std::make_unique<Student>(name, surname, address, pesel, sex, indexNumber));
     } else {
@@ -110,7 +112,7 @@ void University::addStudent() {
     university_.emplace_back(std::make_unique<Student>());
 }
 
-void University::addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, Sex &sex, size_t indexNumber) {
+void University::addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, std::string &sex, size_t indexNumber) {
     if (peselValidation(pesel)) {
         if (!findByPesel(pesel)) {
             university_.emplace_back(std::make_unique<Student>(name, surname, address, pesel, sex, indexNumber));
@@ -124,7 +126,7 @@ void University::addEmployee() {
     university_.emplace_back(std::make_unique<Employee>());
 }
 
-void University::addEmployee(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, Sex &sex, size_t salary) {
+void University::addEmployee(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, std::string &sex, size_t salary) {
     if (peselValidation(pesel)) {
         if (!findByPesel(pesel)) {
             university_.emplace_back(std::make_unique<Employee>(name, surname, address, pesel, sex, salary));
@@ -159,4 +161,30 @@ void University::sortBySalary() {
     const std::unique_ptr<Person>& rhsPtr) {
         return getSalaryIfIs(lhsPtr).value_or(0.0) > getSalaryIfIs(rhsPtr).value_or(0.0) || getSalaryIfIs(lhsPtr).value_or(0.0) == getSalaryIfIs(rhsPtr).value_or(0.0) && getSalaryIfIs(lhsPtr).value_or(0.0) < getSalaryIfIs(rhsPtr).value_or(0.0);
     });
+}
+
+void University::importDatabase(const std::string& fileName, bool& flag) {
+    std::fstream dataBase(fileName);
+    std::string element;
+    std::array<std::string, 7> rowLine{};
+    if (dataBase.is_open()) {
+        while( dataBase.peek() != EOF) {
+            for (size_t i = 0; i < rowLine.size(); ++i) {
+                getline(dataBase, element, ',');
+                rowLine[i] = element;
+                
+            }
+            getline(dataBase, element,',');
+            rowLine[6] = element;
+            if (rowLine[0] == "7Student") {
+                addStudent(rowLine[1], rowLine[2], rowLine[3], rowLine[4], rowLine[5], std::stoi(rowLine[6]));
+            } if (rowLine[0] == "8Employee") {
+                addEmployee(rowLine[1], rowLine[2], rowLine[3], rowLine[4], rowLine[5], std::stod(rowLine[6]));
+            }
+        }
+        dataBase.close();
+        flag = true;
+    } else {
+        flag = false;
+    }
 }

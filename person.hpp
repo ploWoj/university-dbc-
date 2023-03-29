@@ -2,18 +2,18 @@
 #include <iostream>
 #include <string>
 
-enum class Sex
-{
-    Femel,
-    Male,
-    Other
-};
+// enum class Sex
+// {
+//     Femel,
+//     Male,
+//     Other
+// };
 
 class Person
 {
 public:
     Person() = default;
-    Person(std::string name, std::string surname, std::string pesel, std::string address, Sex sex);
+    Person(std::string name, std::string surname, std::string pesel, std::string address, std::string sex);
     virtual ~Person() = default;
 
     // getters
@@ -30,11 +30,11 @@ public:
     void setSurname(const std::string&);
     void setAddress(const std::string&);
     void setPesel(const std::string&);
-    void setSex(const Sex&);
+    void setSex(const std::string&);
 private:    
     std::string name_;
     std::string surname_;
     std::string pesel_;
     std::string address_;
-    Sex sex_;
+    std::string sex_;
 };

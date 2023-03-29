@@ -1,6 +1,6 @@
 #include "student.hpp"
 
-Student::Student(std::string name, std::string surname, std::string address, std::string pesel, Sex sex, size_t indexNumber)
+Student::Student(std::string name, std::string surname, std::string address, std::string pesel, std::string sex, size_t indexNumber)
     : Person(name, surname, address, pesel, sex),
         indexNumber_(indexNumber) {}
 

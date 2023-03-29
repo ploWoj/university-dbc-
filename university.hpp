@@ -20,10 +20,10 @@ public:
 
     const DB getDB() const;
     void displayDB();
-    void addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, Sex &sex, size_t indexNumber);
+    void addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, std::string &sex, size_t indexNumber);
     void addStudent();
 
-    void addEmployee(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, Sex &sex, size_t salary);
+    void addEmployee(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, std::string &sex, size_t salary);
     void addEmployee();
     Person* findBySurname(const std::string& surname);
     Person* findByPesel(const std::string& pesel);
@@ -33,6 +33,9 @@ public:
     void sortBySurname();
     void ereaseByIndex(const size_t indexNumber, std::string message);
     void sortBySalary();
+
+    // Save base to a file
+    void importDatabase(const std::string&, bool&);
 private:
     bool peselValidation(const std::string &pesel);
     DB university_;

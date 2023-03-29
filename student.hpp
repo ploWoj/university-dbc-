@@ -5,7 +5,7 @@
 class Student : public Person{
 public:
     Student() = default;
-    Student(std::string name, std::string surname, std::string address, std::string pesel, Sex sex, size_t indexNumber);
+    Student(std::string name, std::string surname, std::string address, std::string pesel, std::string sex, size_t indexNumber);
     ~Student() = default;
 
     void setIndexNumber(const size_t);

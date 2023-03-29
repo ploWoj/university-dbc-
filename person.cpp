@@ -1,7 +1,7 @@
 #include "person.hpp"
 
 
-Person::Person(std::string name, std::string surname, std::string pesel, std::string address, Sex sex) 
+Person::Person(std::string name, std::string surname, std::string pesel, std::string address, std::string sex) 
     : name_(name)
     , surname_(name)
     , pesel_(pesel)
@@ -29,7 +29,7 @@ void Person::setPesel(const std::string& pesel)
     pesel_ = pesel;
 }
 
-void Person::setSex(const Sex& sex)
+void Person::setSex(const std::string& sex)
 {
     sex_ = sex;
 }
@@ -56,16 +56,11 @@ std::string Person::getPesel() const
 
 std::string Person::getSex() const
 {
-    if (sex_ == Sex::Femel) {
-        return "Femel";
-    } if (sex_ == Sex::Male) {
-        return "Male";
-    }
-    return "Other";
+        return sex_;
 }
 
 void Person::display()
 {
     std::cout << name_ << ", " << surname_ << ", " << address_ << ", " << pesel_
-              << ", " << getSex() << '\n';
+              << ", " << sex_ << '\n';
 }

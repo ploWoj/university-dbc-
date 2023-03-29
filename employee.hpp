@@ -5,7 +5,7 @@
 class Employee : public Person {
 public:
     Employee() = default;
-    Employee(std::string name, std::string surname, std::string address, std::string pesel, Sex sex, double salary);
+    Employee(std::string name, std::string surname, std::string address, std::string pesel, std::string sex, double salary);
     ~Employee();
 
     void setSalary(const double);
