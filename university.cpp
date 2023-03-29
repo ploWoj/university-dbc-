@@ -160,3 +160,10 @@ std::optional<size_t> getSalaryIfIs(const std::unique_ptr<Person>& person) {
     }
     return std::nullopt;
 }
+void University::sortBySalary() {
+    std::sort(university_.cbegin(), university_.cend(),
+    [](const std::unique_ptr<Person>& lhsPtr,
+    const std::unique_ptr<Person>& rhsPtr) {
+        return getSalaryIfIs(lhsPtr).value_or(0.0) > getSalaryIfIs(rhsPtr).value_or(0.0) || getSalaryIfIs(lhsPtr).value_or(0.0) == getSalaryIfIs(rhsPtr).value_or(0.0) && getSalaryIfIs(lhsPtr).value_or(0.0) < getSalaryIfIs(rhsPtr).value_or(0.0);
+    });
+}
