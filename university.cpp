@@ -1,4 +1,5 @@
 #include <fstream>
+#include <typeinfo>
 
 #include "university.hpp"
 
@@ -180,6 +181,27 @@ void University::importDatabase(const std::string& fileName, bool& flag) {
                 addStudent(rowLine[1], rowLine[2], rowLine[3], rowLine[4], rowLine[5], std::stoi(rowLine[6]));
             } if (rowLine[0] == "8Employee") {
                 addEmployee(rowLine[1], rowLine[2], rowLine[3], rowLine[4], rowLine[5], std::stod(rowLine[6]));
+            }
+        }
+        dataBase.close();
+        flag = true;
+    } else {
+        flag = false;
+    }
+}
+
+void University::exportDatabase(const std::string& fileName, bool& flag) {
+    std::ofstream dataBase(fileName);
+    dataBase.open(fileName);
+    if (dataBase.is_open()) {
+        for (const auto& itPerson : university_) {
+            dataBase << typeid(*itPerson).name() << itPerson->getName() <<
+            ", " << itPerson->getSurname() << ", " << itPerson->getAddress() << ", " 
+            << itPerson->getPesel() << itPerson->getSex() << ","; 
+            if (auto itStudent = dynamic_cast<Student*>(itPerson.get())){
+                dataBase << itStudent->getIndexNumber() << '\n';
+            } if (auto itEmployee = dynamic_cast<Employee*>(itPerson.get())){
+                dataBase << itEmployee->getSalary() << '\n';
             }
         }
         dataBase.close();

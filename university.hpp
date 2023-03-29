@@ -36,6 +36,7 @@ public:
 
     // Save base to a file
     void importDatabase(const std::string&, bool&);
+    void exportDatabase(const std::string&, bool&);
 private:
     bool peselValidation(const std::string &pesel);
     DB university_;
