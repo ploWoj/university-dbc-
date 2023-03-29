@@ -147,3 +147,16 @@ void University::modifySalary(double salary, std::string& pesel) {
     }
 }
 
+std::optional<size_t> getIndexIfIs(const std::unique_ptr<Person>& person) {
+    if (auto* student = dynamic_cast<Student*>(person.get())) {
+        return student->getIndexNumber();
+    }
+    return std::nullopt;
+}
+
+std::optional<size_t> getSalaryIfIs(const std::unique_ptr<Person>& person) {
+    if (auto* employee = dynamic_cast<Employee*>(person.get())) {
+        return employee->getSalary();
+    }
+    return std::nullopt;
+}

@@ -32,6 +32,7 @@ public:
     void sortByPesel();
     void sortBySurname();
     void ereaseByIndex(const size_t indexNumber, std::string message);
+    void sortBySalary();
 private:
     bool peselValidation(const std::string &pesel);
     DB university_;
