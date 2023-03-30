@@ -1,31 +1,23 @@
-cmake_minimum_required(3.18)
+cmake_minimum_required(VERSION 3.10)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+project(university---db)
 
-project(univeristy-db)
+set(SOURCE Student.cpp University.cpp Employee.cpp Menu.cpp Person.cpp catch_amalgamated.cpp catch_main.cpp test.cpp)
+set(FLAGS -Wall -Wextra  -O3)
 
-#GTest download
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
-)
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+add_library(${PROJECT_NAME}-lib STATIC ${SOURCE})
+target_compile_options( ${PROJECT_NAME}-lib PRIVATE ${FLAGS})
+set_target_properties(${PROJECT_NAME}-lib PROPERTIES CXX_STANDARD 20 CXX_STANDARD_REQUIRED ON)
 
-set(SRC_LIST address.cpp
-             person.cpp
-             employee.cpp
-             student.cpp
-             data_generator.cpp
-             menu.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
+target_compile_options( ${PROJECT_NAME} PRIVATE ${FLAGS})
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20 CXX_STANDARD_REQUIRED ON)
+target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib)
+# Add catch2
+add_executable(${PROJECT_NAME}-ut test.cpp )
+target_link_libraries(${PROJECT_NAME}-ut ${PROJECT_NAME}-lib)
+set_target_properties(${PROJECT_NAME}-ut PROPERTIES CXX_STANDARD 20 CXX_STANDARD_REQUIRED ON)
+target_compile_options( ${PROJECT_NAME}-ut PRIVATE ${FLAGS})
 
-add_executable(${PROJECT_NAME} ${SRC_LIST} main.cpp)
-target_compile_options(${PROJCET_NAME} PUBLIC -Wall -pedantic - Wextra)
-
-add_executable(${PROJECT_NAME}-ut ${SRC_LIST} test.cpp)
-target_link_libraries(${PROJECT_NAME}-ut gtest_main)
-
-add_test(NAME ${PROJECT_NAME}-test COMMAND ${PROJECT_NAME}-ut)
+enable_testing()
+add_test(NAME unitTests COMMAND ./${PROJECT_NAME}-ut --success)
