@@ -34,3 +34,65 @@ void Menu::printPanel(const std::string& message) {
               << " | message: " << message << '\n';
     separator();
 }
+
+void Menu::mainManu()
+{
+    short choice = -1;
+    std::string message = "Welcom. Choose an option.";
+    std::cout << "\n..:: University database ::..\n";
+
+    while (choice != 0) {
+        printPanel(message);
+        printMainManu();
+        std::cout << " > ";
+        std::cin >> choice;
+        switch (static_cast<Order>(choice)) {
+        case Order::PrintAll: {
+            message = menuPrintAll();
+
+        } break;
+        case Order::AddStudent: {
+            menuAddStudent();
+
+        } break;
+        case Order::AddEmployee: {
+            menuAddEmplyee();
+
+        } break;
+        case Order::SortByPesel: {
+            message = menuSortByPesel();
+
+        } break;
+        case Order::SortBySurname: {
+            message = menuSortBySurname();
+
+        } break;
+        case Order::SortBySalary: {
+            message = menuSortBySalary();
+
+        } break;
+        case Order::FindByPesel: {
+            message = menuFindByPesel();
+
+        } break;
+        case Order::FindBySurname: {
+            message = menuFindBySurname();
+
+        } break;
+        case Order::ChangeSalary: {
+            message = menuChangeSalary();
+
+        } break;
+        case Order::RemovePerson: {
+            message = menuRemovePerson();
+        } break;
+        case Order::SaveToFile: {
+            message = menuSaveToFile();
+        } break;
+        case Order::ReadFromFile: {
+            message = menuLoadFromFile();
+
+        } break;
+        }
+    }
+}

@@ -6,7 +6,7 @@
 
 enum class Order
 {
-    PrintAll,
+    PrintAll = 1,
     AddStudent,
     AddEmployee,
     SortByPesel,
@@ -17,8 +17,7 @@ enum class Order
     ChangeSalary,
     RemovePerson,
     SaveToFile,
-    ReadFromFile,
-};
+    ReadFromFile,expression
 
 constexpr const static uint8_t typeColumnWidth = 10;
 constexpr const static uint8_t firstNameColumnWidth = 16;
@@ -39,7 +38,7 @@ public:
 
     void mainMenu();
     void printMainMenu() const;
-    void printPanel(const std::string message);
+    void printPanel(const std::string& message);
     void printHeader();
     void separator();
     void menuAddStudent();
@@ -47,6 +46,8 @@ public:
 
     std::string menuPrintAll();
     std::string menuSortByPesel();
+    std::string menuAddStudent();
+    std::string menuAddEmployee();
 
 private:
     University &db_;
