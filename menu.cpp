@@ -19,3 +19,11 @@ void Menu::printMainMenu() const {
               << "[ 9] Change salary" << std::setw(itemSize)
               << "[12] Read from file" << '\n';
 }
+
+void Menu::separator()
+{
+    std::cout << std::right << std ::setfill('-')
+              << std::setw(typeColumnWidth + firstNameColumnWidth + lastNameColumnWidth + peselColumnWidth + addressColumnWidth + sexColumnWidth + indexNumberColumnWidth + salaryColumnWidth)
+              << '\n';
+    std::cout << std ::setfill(' ');
+}
