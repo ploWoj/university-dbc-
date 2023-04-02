@@ -17,7 +17,8 @@ enum class Order
     ChangeSalary,
     RemovePerson,
     SaveToFile,
-    ReadFromFile,expression
+    ReadFromFile,
+};
 
 constexpr const static uint8_t typeColumnWidth = 10;
 constexpr const static uint8_t firstNameColumnWidth = 16;
@@ -36,8 +37,8 @@ class Menu
 public:
     Menu(University & db) : db_(db) {};
 
-    void mainMenu();
-    void printMainMenu() const;
+    void mainManu();
+    void printMainManu() const;
     void printPanel(const std::string& message);
     void printHeader();
     void separator();
@@ -46,8 +47,16 @@ public:
 
     std::string menuPrintAll();
     std::string menuSortByPesel();
-    std::string menuAddStudent();
-    std::string menuAddEmployee();
+    std::string menuSortBySurname();
+    std::string menuSaveToFile();
+    std::string menuLoadFromFile();
+    std::string menuSortBySalary();
+
+    std::string menuFindByPesel();
+    std::string menuFindBySurname();
+    std::string menuChangeSalary();
+    std::string menuRemovePerson();
+   
 
 private:
     University &db_;

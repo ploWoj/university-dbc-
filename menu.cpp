@@ -2,7 +2,7 @@
 
 #include "menu.hpp"
 
-void Menu::printMainMenu() const {
+void Menu::printMainManu() const {
     uint8_t itemSize = 23;
     std::cout << std::left << std::setfill(' ');
     std::cout << std::setw(itemSize) << "[ 1] Print DB" << std::setw(itemSize) 
@@ -56,7 +56,7 @@ void Menu::mainManu()
 
         } break;
         case Order::AddEmployee: {
-            menuAddEmplyee();
+            menuAddEmployee();
 
         } break;
         case Order::SortByPesel: {
@@ -95,4 +95,15 @@ void Menu::mainManu()
         } break;
         }
     }
+}
+
+std::string Menu::menuPrintAll() {
+    if (db_.getDB().empty()) {
+        printHeader();
+        std::cout << "\n\n\tdatabase is empty. \n";
+        std::cout << "\t\tAdd person[2] or read from a file[12]";
+    } else {
+        db_.displayDB();
+    }
+    return "Choose an option";
 }
