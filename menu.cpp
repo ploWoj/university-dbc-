@@ -27,3 +27,10 @@ void Menu::separator()
               << '\n';
     std::cout << std ::setfill(' ');
 }
+
+void Menu::printPanel(const std::string& message) {
+    separator();
+    std::cout << "Database size: " << db_.getDB().size() 
+              << " | message: " << message << '\n';
+    separator();
+}
