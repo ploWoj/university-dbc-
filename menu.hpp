@@ -38,6 +38,15 @@ public:
     Menu(University & db) : db_(db) {};
 
     void mainMenu();
+    void printMainMenu() const;
+    void printPanel(const std::string message);
+    void printHeader();
+    void separator();
+    void menuAddStudent();
+    void menuAddEmployee();
+
+    std::string menuPrintAll();
+    std::string menuSortByPesel();
 
 private:
     University &db_;
