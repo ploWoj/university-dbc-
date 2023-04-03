@@ -123,7 +123,7 @@ void Menu::printHeader()
     separator();
 }
 
-void Menu::menuAddEmplyee()
+void Menu::menuAddEmployee()
 {
     std::string name;
     std::string surname;
@@ -145,4 +145,11 @@ void Menu::menuAddEmplyee()
     std::cout << "Give your salar: ";
     std::cin >> salary;
     db_.addEmployee(name, surname, address, pesel, gender, salary);
+}
+
+std::string Menu::menuSortByPesel()
+{
+    system("clear");
+    db_.sortByPesel();
+    return "Data base has been sorted by pesel.";
 }
