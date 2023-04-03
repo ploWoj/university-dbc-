@@ -122,3 +122,27 @@ void Menu::printHeader()
               << "index num.:" << std::setw(sexColumnWidth) << "salary:" << '\n';
     separator();
 }
+
+void Menu::menuAddEmplyee()
+{
+    std::string name;
+    std::string surname;
+    std::string address;
+    double salary;
+    std::string pesel;
+    std::string gender;
+
+    std::cout << "Give your name:";
+    std::cin >> name;
+    std::cout << "Give your surname:";
+    std::cin >> surname;
+    std::cout << "Give your city: ";
+    std::cin >> address;
+    std::cout << "Give your pesel:";
+    std::cin >> pesel;
+    std::cout << "Give your gender (woman/ man): ";
+    std::cin >> gender;
+    std::cout << "Give your salar: ";
+    std::cin >> salary;
+    db_.addEmployee(name, surname, address, pesel, gender, salary);
+}
