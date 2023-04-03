@@ -153,3 +153,10 @@ std::string Menu::menuSortByPesel()
     db_.sortByPesel();
     return "Data base has been sorted by pesel.";
 }
+
+std::string Menu::menuSortBySurname()
+{
+    system("clear");
+    db_.sortBySurname();
+    return "Data base has been sorted by surname.";
+}
