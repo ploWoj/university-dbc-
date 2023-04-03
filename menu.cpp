@@ -190,3 +190,18 @@ std::string Menu::menuLoadFromFile()
     db_.importDatabase(filename, flag);
     return flag ? "File has been loaded succesfully" : "File unable to open";
 }
+
+std::string Menu::menuFindByPesel()
+{
+    std::string pesel;
+    std::cout << "Give pesel: ";
+    std::cin >> pesel;
+    if (db_.peselValidation(pesel)) {
+        auto find = db_.findByPesel(pesel);
+        if (find) {
+            return "A person with the pesel " + pesel + ", has been found " + find->getName() + " " + find->getSurname() + ".";
+        }
+        return "There is no person with that pesel number.";
+    }
+    return "Wrong pesel.";
+}

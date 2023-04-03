@@ -38,7 +38,7 @@ public:
     void importDatabase(const std::string &, bool &);
     void exportDatabase(const std::string &, bool &);
 
-private:
     bool peselValidation(const std::string &pesel);
+private:
     DB university_;
 };
