@@ -160,3 +160,13 @@ std::string Menu::menuSortBySurname()
     db_.sortBySurname();
     return "Data base has been sorted by surname.";
 }
+
+std::string Menu::menuSaveToFile()
+{
+    std::cout << "Enter filename: ";
+    bool flag = false;
+    std::string filename;
+    std::cin >> filename;
+    db_.exportDatabase(filename, flag);
+    return flag ? "File save successfully" : "File unable to open";
+}
