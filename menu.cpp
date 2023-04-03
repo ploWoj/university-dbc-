@@ -107,3 +107,18 @@ std::string Menu::menuPrintAll() {
     }
     return "Choose an option";
 }
+
+void Menu::printHeader()
+{
+    separator();
+    std::cout << std::left;
+    std::cout << std::setw(typeColumnWidth)
+              << "type:" << std::setw(firstNameColumnWidth)
+              << "first name:" << std::setw(lastNameColumnWidth)
+              << "last name:" << std::setw(addressColumnWidth)
+              << "address:" << std::setw(peselColumnWidth)
+              << "PESEL:" << std::setw(sexColumnWidth)
+              << "sex:" << std::setw(indexNumberColumnWidth)
+              << "index num.:" << std::setw(sexColumnWidth) << "salary:" << '\n';
+    separator();
+}
