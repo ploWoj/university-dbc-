@@ -180,3 +180,13 @@ std::string Menu::menuLoadFromFile()
     db_.importDatabase(filename, flag);
     return flag ? "File has been loaded succesfully" : "File unable to open";
 }
+
+std::string Menu::menuLoadFromFile()
+{
+    std::cout << "Enter filename: ";
+    bool flag = false;
+    std::string filename;
+    std::cin >> filename;
+    db_.importDatabase(filename, flag);
+    return flag ? "File has been loaded succesfully" : "File unable to open";
+}
