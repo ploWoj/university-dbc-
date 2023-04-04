@@ -218,3 +218,15 @@ double Menu::validationSalary(double& newSalary)
     }
     return newSalary;
 }
+
+std::string Menu::validationpesele(std::string& pesel)
+{
+    std::cout << "Give a pesel number";
+    std::cin >> pesel;
+    while (!db_.peselValidation(pesel)) {
+        std::cout << "wrong pesel\n";
+        std::cout << "Give a pesel number";
+        std::cin >> pesel;
+    }
+    return pesel;
+}
