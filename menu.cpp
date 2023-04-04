@@ -253,3 +253,13 @@ std::string Menu::menuFindBySurname()
     }
     return "A person with the surname: " + surname + "does not exists.";
 }
+
+std::string Menu::menuRemovePerson()
+{
+    std::string message { "" };
+    size_t index = 0;
+    std::cout << "Give an index number you want to earase.\n";
+    std::cin >> index;
+    db_.ereaseByIndex(index, message);
+    return message;
+}
