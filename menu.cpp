@@ -205,3 +205,16 @@ std::string Menu::menuFindByPesel()
     }
     return "Wrong pesel.";
 }
+
+double Menu::validationSalary(double& newSalary)
+{
+    std::cout << "Give new salary (1500 - 15000).\n";
+    std::cin >> newSalary;
+
+    while (newSalary > maxSalary || newSalary < minSalary) {
+        std::cout << "Salary out of bands.\n";
+        std::cout << "Give new salary.\n";
+        std::cin >> newSalary;
+    }
+    return newSalary;
+}
