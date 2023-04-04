@@ -219,7 +219,7 @@ double Menu::validationSalary(double& newSalary)
     return newSalary;
 }
 
-std::string Menu::validationpesele(std::string& pesel)
+std::string Menu::validationPesele(std::string& pesel)
 {
     std::cout << "Give a pesel number";
     std::cin >> pesel;
@@ -236,7 +236,20 @@ std::string Menu::menuChangeSalary()
     double newSalary = -1.5;
     std::string pesel { "" };
     newSalary = validationSalary(newSalary);
-    pesel = validationpesele(pesel);
+    pesel = validationPesele(pesel);
     db_.modifySalary(newSalary, pesel);
     return "Salary has been changed.";
+}
+
+std::string Menu::menuFindBySurname()
+{
+    std::string surname;
+    std::cout << "Give surname: ";
+    std::cin >> surname;
+    auto find = db_.findBySurname(surname);
+    if (find) {
+        find->display();
+        return "A pesron with the surname " + find->getSurname() + " exists";
+    }
+    return "A person with the surname: " + surname + "does not exists.";
 }
