@@ -56,7 +56,7 @@ void University::displayDB()
     }
 }
 
-void University::addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, std::string &sex, size_t indexNumber)
+void University::addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel,const std::string &sex, size_t indexNumber)
 {
     if (peselValidation(pesel))
     {
@@ -127,12 +127,8 @@ void University::ereaseByIndex(const size_t indexNumber, std::string message)
     message = "No student with that index number in database!";
 }
 
-void University::addStudent()
-{
-    university_.emplace_back(std::make_unique<Student>());
-}
 
-void University::addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, std::string &sex, size_t indexNumber)
+void University::addStudent(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel,const  std::string &sex, size_t indexNumber)
 {
     if (peselValidation(pesel))
     {
@@ -147,12 +143,13 @@ void University::addStudent(const std::string &name, const std::string &surname,
     }
 }
 
-void University::addEmployee()
+void University::addStudent()
 {
-    university_.emplace_back(std::make_unique<Employee>());
+    university_.emplace_back(std::make_unique<Student>());
 }
 
-void University::addEmployee(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel, std::string &sex, size_t salary)
+
+void University::addEmployee(const std::string &name, const std::string &surname, const std::string &address, const std::string &pesel,const  std::string &sex, double salary)
 {
     if (peselValidation(pesel))
     {
@@ -167,7 +164,12 @@ void University::addEmployee(const std::string &name, const std::string &surname
     }
 }
 
-void University::modifySalary(double salary, std::string &pesel)
+void University::addEmployee()
+{
+    university_.emplace_back(std::make_unique<Employee>());
+}
+
+void University::modifySalary(double salary,const std::string &pesel)
 {
     auto person = findByPesel(pesel);
     if (!person)

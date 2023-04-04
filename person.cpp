@@ -1,7 +1,7 @@
 #include "person.hpp"
 
 
-Person::Person(std::string name, std::string surname, std::string pesel, std::string address, std::string sex) 
+Person::Person(const std::string& name, const std::string& surname, const std::string& pesel, const std::string& address, const std::string& sex) 
     : name_(name)
     , surname_(name)
     , pesel_(pesel)

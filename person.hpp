@@ -13,7 +13,7 @@ class Person
 {
 public:
     Person() = default;
-    Person(std::string name, std::string surname, std::string pesel, std::string address, std::string sex);
+    Person(const std::string& name,const std::string& surname,const std::string& pesel, const std::string& address, const std::string& sex);
     virtual ~Person() = default;
 
     // getters
