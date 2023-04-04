@@ -230,3 +230,13 @@ std::string Menu::validationpesele(std::string& pesel)
     }
     return pesel;
 }
+
+std::string Menu::menuChangeSalary()
+{
+    double newSalary = -1.5;
+    std::string pesel { "" };
+    newSalary = validationSalary(newSalary);
+    pesel = validationpesele(pesel);
+    db_.modifySalary(newSalary, pesel);
+    return "Salary has been changed.";
+}

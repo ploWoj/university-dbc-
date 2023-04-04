@@ -61,5 +61,5 @@ public:
 private:
     University &db_;
     double validationSalary(double &);
-    std::string validationpesele(std::string &);
+    std::string validationPesele(std::string &);
 };
